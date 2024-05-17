@@ -1,0 +1,73 @@
+version: 2
+
+sources:
+  - name: stg_tables_tpch_sf1
+    description: Tabla de customers tal cual.
+    database: snowflake_sample_data
+    schema: tpch_sf1
+    tables:
+      - name: customer
+        description: Raw customers data.
+        columns:
+          - name: c_custkey
+            description: Primary key for customers.
+            tests:
+              - unique
+              - not_null
+      - name: lineitem
+        columns:
+          - name: l_orderkey
+            tests:
+              - not_null
+          - name: l_partkey
+            tests:
+              - not_null
+          - name: l_suppkey
+            tests:
+              - not_null
+        description: como es un composite key, hay que juntar las 3 sin que sea ninguna nula, y ver que el conjunto de las 3 es unico
+        tests:
+          - unique_combination_of_columns:
+              combination: [l_orderkey, l_partkey, l_suppkey]
+      - name: nation
+        columns:
+          - name: n_nationkey
+            tests:
+              - unique
+              - not_null
+      - name: orders
+        columns:
+          - name: o_orderkey
+            tests:
+              - unique
+              - not_null
+      - name: part
+        columns:
+          - name: p_partkey
+            tests:
+              - unique
+              - not_null
+      - name: partsupp
+        columns:
+          - name: ps_partkey
+            tests:
+              - not_null
+          - name: ps_suppkey
+            tests:
+              - not_null
+        description: como es un composite key, hay que juntar las 2 sin que sea ninguna nula, y ver que el conjunto de las 2 es unico
+        tests:
+          - unique_combination_of_columns:
+              combination: [ps_partkey, ps_suppkey]        
+      - name: region
+        columns:
+          - name: r_regionkey
+            tests:
+              - unique
+              - not_null
+      - name: supplier
+        columns:
+          - name: s_suppkey
+            tests:
+              - unique
+              - not_null
