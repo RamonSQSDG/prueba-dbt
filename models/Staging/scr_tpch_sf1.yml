@@ -19,16 +19,13 @@ sources:
           - name: l_orderkey
             tests:
               - not_null
-          - name: l_partkey
-            tests:
-              - not_null
-          - name: l_suppkey
+          - name: l_linenumber
             tests:
               - not_null
         description: como es un composite key, hay que juntar las 3 sin que sea ninguna nula, y ver que el conjunto de las 3 es unico
         tests:
           - unique_combination_of_columns:
-              combination: [l_orderkey, l_partkey, l_suppkey]
+              combination: [l_orderkey, l_number]
       - name: nation
         columns:
           - name: n_nationkey

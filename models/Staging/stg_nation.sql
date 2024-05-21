@@ -1,5 +1,5 @@
 select
-    n_nationkey as nation_id,
+    distinct(n_nationkey) as nation_id,
     n_name as nation,
     n_regionkey,
     n_comment

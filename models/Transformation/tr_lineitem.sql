@@ -1,5 +1,3 @@
---junto las pk
-
 with original_lineitem as (
     select
         l_orderkey,
@@ -22,18 +20,20 @@ with original_lineitem as (
 )
 
 select
-    concat(l_orderkey, '_', l_partkey, '_', l_suppkey) as lineitem_id,
-    l_linenumber,
-    l_quantity,
-    l_extendedprice,
-    l_discount,
-    l_tax,
+    concat(l_orderkey, '_', l_linenumber) as lineitem_id,
+    l_partkey,
+    l_suppkey,
+    cast(l_quantity as integer) as quantity,
+    l_extendedprice as extended_price,
+    concat(cast(l_discount * 100 as integer), '%') as discount,
+    concat(cast(l_tax * 100 as integer), '%') as tax,
+    round((l_extendedprice / ((1 - l_discount) * (1 + l_tax))) / l_quantity,2) AS unit_price,
     l_returnflag,
     l_linestatus,
     l_shipdate,
     l_commitdate,
     l_receiptdate,
     l_shipinstruct,
-    l_shipmode,
-    l_comment
+    l_shipmode
+
 from original_lineitem
