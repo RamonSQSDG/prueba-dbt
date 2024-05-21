@@ -1,5 +1,5 @@
 select
-    r_regionkey as region_id,
+    distinct(r_regionkey) as region_id,
     r_name as region,
     r_comment
 

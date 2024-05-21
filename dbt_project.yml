@@ -35,11 +35,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  tpch_sf1:
+  RSQ_tpch_sf1:
     # Applies to all files under models/example/
     Staging:
-      stg_customers:  
-        +materialized: incremental
+      +materialized: incremental
     Transformation:
       +materialized: table
     Business:

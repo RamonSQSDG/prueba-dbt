@@ -11,8 +11,7 @@ with original_partsupp as (
 
 select 
     concat(ps_partkey, '_',ps_suppkey) as partsupp_id,
-    ps_availqty,
-    ps_supplycost,
-    ps_comment
+    ps_availqty as availability,
+    ps_supplycost as supply_cost_in_eur
 
 from original_partsupp
