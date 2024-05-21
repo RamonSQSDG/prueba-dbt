@@ -42,4 +42,19 @@ models:
     Transformation:
       +materialized: table
     Business:
-      +materialized: table
+      bs_avg_ship_time:
+        +materialized: table
+      bs_cust_tax: 
+        +materialized: table
+      bs_delete:
+        +materialized: table
+      bs_manu_max_benefits:
+        +materialized: view
+      bs_most_ben_prod:
+        +materialized: view
+      bs_prod_supp:
+        +materialized: table
+      bs_total_per_cust:
+        +materialized: table
+      bs_total_per_cust_brazil:
+        +materialized: view

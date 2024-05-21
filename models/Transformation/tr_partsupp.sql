@@ -1,17 +1,19 @@
 with original_partsupp as (
     select
-        ps_partkey,
-        ps_suppkey,
-        ps_availqty,
-        ps_supplycost,
+        ps_partkey as part_id,
+        ps_suppkey as supplier_id,
+        ps_availqty as availability,
+        ps_supplycost as supply_cost,
         ps_comment
 
     from {{ source ('stg_tables_tpch_sf1', 'partsupp') }}
 )
 
 select 
-    concat(ps_partkey, '_',ps_suppkey) as partsupp_id,
-    ps_availqty as availability,
-    ps_supplycost as supply_cost_in_eur
+    concat(part_id, '_',supplier_id) as partsupp_id,
+    part_id,
+    supplier_id,
+    availability,
+    supply_cost
 
 from original_partsupp
