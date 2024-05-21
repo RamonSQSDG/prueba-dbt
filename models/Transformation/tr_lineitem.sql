@@ -30,10 +30,10 @@ select
     round((l_extendedprice / ((1 - l_discount) * (1 + l_tax))) / l_quantity,2) AS unit_price,
     l_returnflag,
     l_linestatus,
-    l_shipdate,
-    l_commitdate,
-    l_receiptdate,
+    l_shipdate as ship_date,
+    l_commitdate as commit_date,
+    l_receiptdate as receipt_date,
     l_shipinstruct,
-    l_shipmode
+    l_shipmode as ship_mode
 
 from original_lineitem
