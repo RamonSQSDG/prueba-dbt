@@ -1,6 +1,6 @@
 with original_part as (
     select
-    p_partkey as part_id,
+    part_id,
     p_name as product,
     p_mfgr as manufacturer,
     p_brand as brand,
@@ -10,7 +10,7 @@ with original_part as (
     p_retailprice as retail_price,
     p_comment
 
-from {{ source ('stg_tables_tpch_sf1', 'part') }}
+from {{ ref('stg_part') }}
 )
 select
     part_id,

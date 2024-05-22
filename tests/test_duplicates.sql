@@ -1,0 +1,1 @@
+{{ check_duplicates_customer_id(ref('stg_customers')) }}

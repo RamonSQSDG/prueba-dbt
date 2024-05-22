@@ -28,5 +28,4 @@ FROM customer_ranking cr
 INNER JOIN {{ ref('tr_customers') }} c 
 ON cr.customer_id = c.customer_id
 
-ORDER BY cr.ranking
-limit 10000
+ORDER BY cr.ranking asc

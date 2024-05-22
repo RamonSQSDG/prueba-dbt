@@ -24,8 +24,10 @@ sources:
               - not_null
         description: como es un composite key, hay que juntar las 3 sin que sea ninguna nula, y ver que el conjunto de las 3 es unico
         tests:
-          - unique_combination_of_columns:
-              combination: [l_orderkey, l_number]
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns: 
+                - l_orderkey 
+                - l_linenumber
       - name: nation
         columns:
           - name: n_nationkey
@@ -54,8 +56,10 @@ sources:
               - not_null
         description: como es un composite key, hay que juntar las 2 sin que sea ninguna nula, y ver que el conjunto de las 2 es unico
         tests:
-          - unique_combination_of_columns:
-              combination: [ps_partkey, ps_suppkey]        
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns: 
+                - ps_partkey
+                - ps_suppkey        
       - name: region
         columns:
           - name: r_regionkey

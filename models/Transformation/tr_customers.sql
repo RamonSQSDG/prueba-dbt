@@ -1,6 +1,6 @@
 with original_customers as (
     select
-    c_custkey as customer_id,
+    customer_id,
     c_name,
     c_address,
     c_nationkey,
@@ -9,7 +9,7 @@ with original_customers as (
     c_mktsegment,
     c_comment
 
-from {{ source('stg_tables_tpch_sf1', 'customer') }}
+from {{ ref('stg_customers') }}
 )
 
 select 
@@ -26,3 +26,5 @@ select
 from original_customers as c
 inner join {{ ref('tr_location') }} l
 on c.c_nationkey = l.nation_id
+order by customer_id asc
+limit 10000

@@ -39,6 +39,8 @@ models:
     # Applies to all files under models/example/
     Staging:
       +materialized: incremental
+      stg_supplier:
+        +materialized: table
     Transformation:
       +materialized: table
     Business:

@@ -11,6 +11,5 @@ SELECT
     ranking,
     manufacturer,
     total_benefits
-FROM
-    max_benefits
-order by total_benefits desc
+FROM max_benefits
+order by ranking

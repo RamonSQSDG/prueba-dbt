@@ -1,3 +1,7 @@
+
+{% set condition = "1=1" %}
+{{ delete_from_table_if_exists(target.database, this.schema, this.table, condition) }}
+
 select
     ps_partkey,
     ps_suppkey,
