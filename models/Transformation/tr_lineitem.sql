@@ -16,17 +16,21 @@ with original_lineitem as (
         l_shipinstruct,
         l_shipmode,
         l_comment
-    from {{ source('stg_tables_tpch_sf1', 'lineitem') }}
+    from {{ ref('stg_lineitem') }}
 )
 
 select
     concat(l_orderkey, '_', l_linenumber) as lineitem_id,
+    l_orderkey,
+    l_linenumber,
     l_partkey,
     l_suppkey,
     cast(l_quantity as integer) as quantity,
     l_extendedprice as extended_price,
     concat(cast(l_discount * 100 as integer), '%') as discount,
+    l_discount,
     concat(cast(l_tax * 100 as integer), '%') as tax,
+    l_tax,
     round((l_extendedprice / ((1 - l_discount) * (1 + l_tax))) / l_quantity,2) AS unit_price,
     l_returnflag,
     l_linestatus,

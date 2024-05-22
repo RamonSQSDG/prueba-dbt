@@ -1,3 +1,6 @@
+{% set condition = "1=1" %}
+{{ delete_from_table_if_exists(target.database, this.schema, this.table, condition) }}
+
 select
     o_orderkey as order_id,
     o_custkey,

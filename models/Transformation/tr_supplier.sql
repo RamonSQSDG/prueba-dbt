@@ -1,6 +1,6 @@
 with original_supplier as (
     select
-    s_suppkey as supplier_id,
+    supplier_id,
     s_name,
     s_address,
     s_nationkey,
@@ -8,7 +8,7 @@ with original_supplier as (
     s_acctbal,
     s_comment
 
-from {{ source ('stg_tables_tpch_sf1', 'supplier') }}
+from {{ ref('stg_supplier') }}
 )
 
 select

@@ -6,7 +6,7 @@ with original_partsupp as (
         ps_supplycost as supply_cost,
         ps_comment
 
-    from {{ source ('stg_tables_tpch_sf1', 'partsupp') }}
+    from {{ ref('stg_partsupp') }}
 )
 
 select 

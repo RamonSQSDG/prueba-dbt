@@ -1,19 +1,19 @@
 with original_nation as (
     select
-    distinct(n_nationkey) as nation_id,
-    n_name as nation,
+    nation_id,
+    nation,
     n_regionkey,
     n_comment
 
-from {{ source ('stg_tables_tpch_sf1', 'nation')}}
+from {{ ref('stg_nation') }}
 ),
 original_region as (
     select
-    distinct(r_regionkey) as region_id,
-    r_name as region,
+    region_id,
+    region,
     r_comment
 
-from {{ source ('stg_tables_tpch_sf1', 'region') }}
+from {{ ref('stg_region') }}
 )
 
 select n.nation, r.region, n.nation_id, r.region_id

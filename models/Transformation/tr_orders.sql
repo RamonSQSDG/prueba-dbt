@@ -1,6 +1,6 @@
 with original_orders as (
     select
-    o_orderkey as order_id,
+    order_id,
     o_custkey,
     o_orderstatus,
     o_totalprice,
@@ -10,7 +10,7 @@ with original_orders as (
     o_shippriority,
     o_comment
 
-from {{ source ('stg_tables_tpch_sf1', 'orders') }}
+from {{ ref('stg_orders') }}
 )
 select
     order_id,
@@ -24,3 +24,5 @@ select
     o_comment
 
 from original_orders
+order by order_id asc
+limit 10000

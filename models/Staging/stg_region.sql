@@ -1,5 +1,8 @@
+{% set condition = "1=1" %}
+{{ delete_from_table_if_exists(target.database, this.schema, this.table, condition) }}
+
 select
-    distinct(r_regionkey) as region_id,
+    r_regionkey as region_id,
     r_name as region,
     r_comment
 

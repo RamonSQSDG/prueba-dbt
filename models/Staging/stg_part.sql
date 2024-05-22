@@ -1,3 +1,6 @@
+{% set condition = "1=1" %}
+{{ delete_from_table_if_exists(target.database, this.schema, this.table, condition) }}
+
 select
     p_partkey as part_id,
     p_name,
