@@ -1,4 +1,4 @@
--- desde la staging, probar si puedo borrar algo, utilizando la macro
+-- desde la transforming, probar si puedo borrar algo, utilizando la macro
 -- delete_from_table_if_exists(database, schema, table, condition)
 
 {{ delete_from_table_if_exists(target.database,this.schema,'tr_customers','customer_id=2') }}

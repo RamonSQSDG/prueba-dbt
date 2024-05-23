@@ -13,3 +13,5 @@ select
 
 from {{ source('stg_tables_tpch_sf1', 'customer') }}
 order by customer_id asc
+
+
