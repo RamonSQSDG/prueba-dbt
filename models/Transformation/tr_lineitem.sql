@@ -41,3 +41,4 @@ select
     l_shipmode as ship_mode
 
 from original_lineitem
+order by l_orderkey,l_linenumber asc

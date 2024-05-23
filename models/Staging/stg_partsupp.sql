@@ -10,3 +10,5 @@ select
     ps_comment
 
 from {{ source ('stg_tables_tpch_sf1', 'partsupp') }}
+order by ps_partkey, ps_suppkey asc
+limit 10000

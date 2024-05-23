@@ -16,5 +16,5 @@ on c.customer_id=o.customer_id
 inner join {{ ref('tr_lineitem') }} l
 on o.order_id=l.l_orderkey
 
-order by l.lineitem_id asc
+order by lineitem_id asc
 limit 10000

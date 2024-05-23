@@ -13,3 +13,5 @@ select
     o_comment
 
 from {{ source ('stg_tables_tpch_sf1', 'orders') }}
+order by order_id asc
+limit 10000
