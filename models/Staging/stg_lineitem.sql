@@ -20,3 +20,5 @@ select
     l_comment
 
 from {{ source ('stg_tables_tpch_sf1', 'lineitem')}}
+order by l_orderkey asc
+limit 10000
